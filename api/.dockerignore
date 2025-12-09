@@ -1,0 +1,12 @@
+# Ignore build outputs and files that should not be in the Docker context
+target
+.m2
+.git
+.gitignore
+.idea
+*.iml
+node_modules
+README.md
+docs
+**/test-classes
+**/*.log

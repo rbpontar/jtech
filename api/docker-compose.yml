@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: tasklist_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: tasklist
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: tasklist_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - tasknet
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tasklist -d tasklist_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  db_data:
+
+networks:
+  tasknet:
+    driver: bridge
