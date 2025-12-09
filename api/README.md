@@ -5,53 +5,56 @@ Backend REST API para um sistema de gerenciamento de tarefas com autenticação 
 ## Quick Start
 
 ### Requisitos
+
 - Java 17+
 - PostgreSQL
 - Maven 3.9.6+
 
 ### Setup
 
-1. **Criar banco de dados**
+**Banco de dados**
+
 ```sql
-CREATE DATABASE tasklist_db;
+  RODANDO NO DOCKER
+  rodar
+    docker compose up -d
 ```
 
-2. **Configurar propriedades** (`src/main/resources/application.properties`)
-```properties
-spring.datasource.url=jdbc:postgresql://localhost:5432/tasklist_db
-spring.datasource.username=postgres
-spring.datasource.password=seu_password
+**Rordar a api via vscode**
+
+```
+Abrir o projeto e rodar a api, classe de entrada
+  TaskApplication
 ```
 
-3. **Compilar e executar**
-```bash
-bash mvnw clean compile
-bash mvnw spring-boot:run
-```
-
-4. **Executar testes**
-```bash
-bash mvnw test
-```
 
 API disponível em: `http://localhost:8081/api`
 
 ---
 
-##  Endpoints Principais
-
+## Endpoints Principais
+```
 ### Autenticação
 - `POST /auth/register` - Registrar novo usuário
 - `POST /auth/login` - Fazer login
-- `POST /auth/refresh` - Renovar token
+```
 
 ### Tarefas (Autenticado)
+
 - `POST /tasks` - Criar tarefa
 - `GET /tasks` - Listar tarefas
 - `GET /tasks/{id}` - Obter tarefa
 - `PUT /tasks/{id}` - Atualizar tarefa
 - `DELETE /tasks/{id}` - Deletar tarefa
+---
 
+### Lista de Tarefas (Autenticado)
+
+- `POST /taskslist` - Criar tarefa
+- `GET /taskslist` - Listar tarefas
+- `GET /taskslist/{id}` - Obter tarefa
+- `PUT /taskslist/{id}` - Atualizar tarefa
+- `DELETE /taskslist/{id}` - Deletar tarefa
 ---
 
 ## Arquitetura
@@ -69,14 +72,4 @@ Implementação com:
 - Testes automatizados (JUnit 5 + Mockito)
 
 ---
-
-##  Documentação Completa
-
-Ver `IMPLEMENTATION.md` para detalhes completos incluindo:
-- Especificação de endpoints
-- Exemplos de requisições/respostas
-- Princípios SOLID implementados
-- Testes e cobertura
-- Configurações de segurança
-
----
+```

@@ -79,26 +79,4 @@ public class TaskListController {
         taskListService.deleteTaskList(id);
         return ResponseEntity.noContent().build();
     }
-
-    /**
-     * Move a task to a specific task list.
-     * PUT /api/tasklists/{listId}/tasks/{taskId}
-     */
-    @PutMapping("/{listId}/tasks/{taskId}")
-    public ResponseEntity<Void> moveTaskToList(
-            @PathVariable Long listId,
-            @PathVariable Long taskId) {
-        taskListService.moveTaskToList(taskId, listId);
-        return ResponseEntity.noContent().build();
-    }
-
-    /**
-     * Remove a task from its task list (set to uncategorized).
-     * DELETE /api/tasklists/{listId}/tasks/{taskId}
-     */
-    @DeleteMapping("/{listId}/tasks/{taskId}")
-    public ResponseEntity<Void> removeTaskFromList(@PathVariable Long taskId) {
-        taskListService.removeTaskFromList(taskId);
-        return ResponseEntity.noContent().build();
-    }
 }

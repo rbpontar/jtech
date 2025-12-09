@@ -141,25 +141,4 @@ public class TaskListControllerTest {
                 verify(taskListService, times(1)).deleteTaskList(1L);
         }
 
-        @Test
-        void testMoveTaskToList_Success() throws Exception {
-                doNothing().when(taskListService).moveTaskToList(1L, 1L);
-
-                mockMvc.perform(put("/api/tasklists/1/tasks/1")
-                                .contentType(MediaType.APPLICATION_JSON))
-                                .andExpect(status().isNoContent());
-
-                verify(taskListService, times(1)).moveTaskToList(1L, 1L);
-        }
-
-        @Test
-        void testRemoveTaskFromList_Success() throws Exception {
-                doNothing().when(taskListService).removeTaskFromList(1L);
-
-                mockMvc.perform(delete("/api/tasklists/1/tasks/1")
-                                .contentType(MediaType.APPLICATION_JSON))
-                                .andExpect(status().isNoContent());
-
-                verify(taskListService, times(1)).removeTaskFromList(1L);
-        }
 }
